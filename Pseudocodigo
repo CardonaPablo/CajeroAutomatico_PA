@@ -1,0 +1,29 @@
+a) El cajero está cargado previamente con 50 billetes de $20
+
+
+1. La pantalla muestra un mensaje de bienvenida
+2. Pide que introduzca un numero de cuenta
+3. Pide que introduzca el NIP asociado al numero de cuenta
+4. Si el usuario introduce un número de cuenta válido y el NIP correcto muestra el menú principal
+  4.1 Si es incorrecto la pantalla muestra un mensaje apropiado y regresa al paso 1
+5. Se despliega el menú principal que consta de 4 opciones numeradas (Solicitud de Saldo, Retiro, Depósito, Salir)
+6. El usuario oprime un botón para seleccionar la opción 
+  6.1 Si se introduce una opción inválida se mostrará un mensaje de error y se volverá a mostrar el menú
+7. Solicitud de Saldo
+  7.1 La pantalla muestra el saldo de la base de datos del banco
+8. Retiro
+  8.1 Se muestra un menú con las opciones de retiro estándar ( 20, 40, 60, 100 y 200) además de cancelar la transacción
+  8.2 El usuario selecciona la opcion mediante el teclado
+    8.2.1 Si el monto a retirar es mayor al saldo de cuenta del usuario, se muestra un mensaje de error pidiendo seleccionar una más pequeña
+    8.2.2 Si se decide cancelar, se mostrará el menú principal y un mensaje
+  8.3 El ATM resta el monto retirado a la cuenta del usuario en la base de datos del banco
+  8.4 Se entrega el monto al usuario y muestra un mensaje que recuerde al usuario que tome el dinero
+9. Depósito
+  9.1 Se pide al usuario un monto de depósito en forma de centavos
+    9.1.1 Si se introduce 0 la transacción es cancelada y se regresa al menú principal
+  9.2 La pantalla muestra un mensaje pidiendo que se introduzca el dinero
+    9.2.1 Si no se introduce el dinero en un plazo de 2 minutos, se muestra un mensaje y se cancela la transacción por inactividad y se vuelve al menú principal      
+10. Salir
+  10.1 Se regresa al login del programa
+11. Al realizar una transacción con éxito se regresa al menú principal para escoger otra opción
+
