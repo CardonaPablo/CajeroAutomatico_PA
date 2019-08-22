@@ -1,29 +1,110 @@
-a) El cajero está cargado previamente con 50 billetes de $20
+a) El cajero está cargado previamente con 500 billetes de $20
+class Cajero 
+{
+  private int moneyAmount = 10000;
+  public void setMoneyAmount();
+  public int getMoneyAmount();
+  public void mostrarLogin();
+  public void mostrarMenuPrincipal();
+  public void mostrarMenuRetirar();
+}
+
+b)La funcion mostrar menu principal debera actualizar los datos de la base de datos del cajero en cada llamada
+
+class Usuario{
+  private int numeroDeCuenta
+  private int saldoTotal
+  
 
 
+
+
+Interfaz:
 1. La pantalla muestra un mensaje de bienvenida
+    "Cajero Automatico"
+    
 2. Pide que introduzca un numero de cuenta
+     "N° de Cuenta :  " _________
+     2.1 Almacenar en la variable numeroDeCuenta
+     
 3. Pide que introduzca el NIP asociado al numero de cuenta
+     "Introduzca su NIP : " _______
+     3.1 El NIP debe ser de 5 digitos
+        3.1.1 Si el NIP es mayor a 99999 ya es invalido o si el string es mas largo que 5
+     3.2 Almacenar el NIP en la variable numeroIdentificacionPersonal
+     3.3 Hacer la conexión con la base de datos y realizar el query que compara numeroDeCuenta y numeroDeIdentificacionPersonal con 
+     los datos de la base de datos para determinar si es un usuario y NIP válidos
+     
 4. Si el usuario introduce un número de cuenta válido y el NIP correcto muestra el menú principal
-  4.1 Si es incorrecto la pantalla muestra un mensaje apropiado y regresa al paso 1
+    4.1 Crear un nuevo objeto Usuario que lleve como parametro numeroDeCuenta y saldoTotal
+    4.2 Realizar un query que devuelva el saldo del usuario y almacenarlo en una variable saldo
+    4.3 Utilizando el metodo setSaldo de la clase Usuario, establecer el saldo del usuarioActual igual a el saldo obtenido en la query
+    4.4 Mandar a llamar la función  mostrarMenuPrincipal()
+  ~4. Si es incorrecto la pantalla muestra un mensaje "El NIP o numero de usuario introducido es incorrecto"
+      ~4.1 Volver al login (Llamar a mostrarLogin())
+      
 5. Se despliega el menú principal que consta de 4 opciones numeradas (Solicitud de Saldo, Retiro, Depósito, Salir)
+  "Presione el número de la operación que desea realizar"
+  "[1] Solicitud de Saldo"
+  "[2] Retiro"
+  "[3] Depósito"
+  "[4] Salir"
 6. El usuario oprime un botón para seleccionar la opción 
-  6.1 Si se introduce una opción inválida se mostrará un mensaje de error y se volverá a mostrar el menú
+    6.1 Utilizar el metodo Console.ReadKey() para almacenar la tecla que presionó el usuario y almacenarlo en la variable 
+        opcionMenu
+    6.2 Utilizando un switch con argumento opcionMenu que maneje los mismos casos que el menú
+  ~6. Si se introduce una opción inválida se mostrará un mensaje de error y se volverá a mostrar el menú
+      ~6.1 Esto se logra comparando opcionMenu, si es menor a 0 o es mayor a 4 será inválida
+      ~6.2 Mostrar el mensaje "Opcion Inválida" durante 2 segundos
+      ~6.3 Llamar a mostrarMenuPrincipal()
 7. Solicitud de Saldo
   7.1 La pantalla muestra el saldo de la base de datos del banco
+  7.2 Usar el metodo getSaldo de la clase Usuario y almacenarlo en la variable local saldoUsuario;
+  7.3 Mostrar en la pantalla el mensaje "Su saldo actual es: " seguido de el saldo.
+  7.4 Mostrar el mensaje "Presione una tecla para regresar al menu principal"
+  7.5 Una vez presionada la tecla, llamar a mostrarMenuPrincipal()
 8. Retiro
   8.1 Se muestra un menú con las opciones de retiro estándar ( 20, 40, 60, 100 y 200) además de cancelar la transacción
+  8.1.1 Mostrar en la pantalla (mostrarMenuRetirar())
+        "Presione la tecla correspondiente al monto a retirar"
+        "[1] $20"
+        "[2] $40"
+        "[3] $60"
+        "[4] $100"
+        "[5] $200"
+        "[0] Cancelar Transacción"   
   8.2 El usuario selecciona la opcion mediante el teclado
-    8.2.1 Si el monto a retirar es mayor al saldo de cuenta del usuario, se muestra un mensaje de error pidiendo seleccionar una más pequeña
-    8.2.2 Si se decide cancelar, se mostrará el menú principal y un mensaje
+    8.2.1 Se utiliza el metodo Console.ReadKey() para obtener la opcion digitada por el usuario
+       8.2.1.1 Se almacena este dato en la variable opcionMonto
+       8.2.1.2 Hacer un switch que convierta las opciones a el monto seleccionado y almacenarlo como montoARetirar
+    8.2.2 Si el monto a retirar es mayor al saldo de cuenta del usuario, se muestra un mensaje de error pidiendo seleccionar una más pequeña
+      8.2.2.1 Se utiliza el metodo getSaldo para obtener el saldo del usuario y compararlo con montoARetirar
+      8.2.2.2 Imprimir en consola "Fondos Insuficientes, seleccione un monto menor"
+       8.2.2.3 Llamar mostrarMenuRetirar()
+    8.2.3 Si se decide cancelar, se mostrará el menú principal y un mensaje
+       8.2.3.1 Mostrar en pantalla el mensaje "Transacción cancelada" 
+       8.2.3.2 Llamar a mostrarMenuPrincipal();
   8.3 El ATM resta el monto retirado a la cuenta del usuario en la base de datos del banco
+     8.3.1 Usar la función get y restar el modo retirado, usar get para cambiar el dato
   8.4 Se entrega el monto al usuario y muestra un mensaje que recuerde al usuario que tome el dinero
+    8.4.1 Mostrar en pantalla el mensaje "Tome su dinero"
+    8.4.2 Llamar la función mostrarMenuPrincipal();
 9. Depósito
   9.1 Se pide al usuario un monto de depósito en forma de centavos
-    9.1.1 Si se introduce 0 la transacción es cancelada y se regresa al menú principal
+      9.1.1 Mostrar en pantalla "Digite el monto de depósito en centavos"
+      9.1.2 Pedir el valor de monto y almacenarlo en la variable montoADepositar
+ ~9.1 Si se introduce 0 la transacción es cancelada y se regresa al menú principal
+    ~9.1.1 Si montoADepositar es 0 entonces mostrar mensaje "Transacción Cancelada" y llamar mostrarMenuPrincipal();
   9.2 La pantalla muestra un mensaje pidiendo que se introduzca el dinero
+    9.2.1 Mostrar en la pantalla  el mensaje "Introduzca el dinero en la ranura"
     9.2.1 Si no se introduce el dinero en un plazo de 2 minutos, se muestra un mensaje y se cancela la transacción por inactividad y se vuelve al menú principal      
+        9.2.1.1 Comenzar un timer de 2 minutos, si no se manda la señal se muestra el mensaje "Transacción Cancelada" y llamar a menuPrincipal();
 10. Salir
-  10.1 Se regresa al login del programa
+  10.1 Se regresa al login del programa (Llamar a mostrarLogin())
 11. Al realizar una transacción con éxito se regresa al menú principal para escoger otra opción
 
+
+
+
+DISEÑO DE BASES DE DATOS
+NCuenta (Primary Key), NIP, Saldo
