@@ -55,7 +55,7 @@ Interfaz:
     6.2 Utilizando un switch con argumento opcionMenu que maneje los mismos casos que el menú
   ~6. Si se introduce una opción inválida se mostrará un mensaje de error y se volverá a mostrar el menú
       ~6.1 Esto se logra comparando opcionMenu, si es menor a 0 o es mayor a 4 será inválida
-      ~6.2 Mostrar el mensaje "Opcion Inválida" durante 2 segundos
+      ~6.2 Mostrar el mensaje "Opcion Inválida" durante 0.75 segundos
       ~6.3 Llamar a mostrarMenuPrincipal()
 7. Solicitud de Saldo
   7.1 La pantalla muestra el saldo de la base de datos del banco
@@ -85,7 +85,7 @@ Interfaz:
        8.2.3.1 Mostrar en pantalla el mensaje "Transacción cancelada" 
        8.2.3.2 Llamar a mostrarMenuPrincipal();
   8.3 El ATM resta el monto retirado a la cuenta del usuario en la base de datos del banco
-     8.3.1 Usar la función get y restar el modo retirado, usar get para cambiar el dato
+     8.3.1 Usar la función get y restar el modo retirado, usar set para cambiar el dato
   8.4 Se entrega el monto al usuario y muestra un mensaje que recuerde al usuario que tome el dinero
     8.4.1 Mostrar en pantalla el mensaje "Tome su dinero"
     8.4.2 Llamar la función mostrarMenuPrincipal();
