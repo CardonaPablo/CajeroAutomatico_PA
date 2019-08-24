@@ -1,23 +1,4 @@
 a) El cajero está cargado previamente con 500 billetes de $20
-class Cajero 
-{
-  private int moneyAmount = 10000;
-  public void setMoneyAmount();
-  public int getMoneyAmount();
-  public void mostrarLogin();
-  public void mostrarMenuPrincipal();
-  public void mostrarMenuRetirar();
-}
-
-b)La funcion mostrar menu principal debera actualizar los datos de la base de datos del cajero en cada llamada
-
-class Usuario{
-  private int numeroDeCuenta
-  private int saldoTotal
-  
-
-
-
 
 Interfaz:
 1. La pantalla muestra un mensaje de bienvenida
